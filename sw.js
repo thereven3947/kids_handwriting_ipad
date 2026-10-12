@@ -1,8 +1,13 @@
-const CACHE_NAME = "little-letter-practice-v2";
+const CACHE_NAME = "little-letter-practice-v5";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
+  "./guides.js",
+  "./scoring.js",
+  "./vocabulary.js",
+  "./phonics.js",
+  "./speech.js",
   "./app.js",
   "./manifest.webmanifest",
   "./icons/icon-192.png",

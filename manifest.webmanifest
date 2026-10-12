@@ -1,13 +1,13 @@
 {
   "name": "Little Letter Practice",
   "short_name": "Letter Practice",
-  "description": "A kid-friendly handwriting practice app for iPad Air.",
+  "description": "Kid-friendly handwriting practice for iPad and the browser: trace letters, write on your own and learn picture words.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#EAF9FF",
   "theme_color": "#5EC7FF",
-  "orientation": "portrait",
+  "orientation": "any",
   "icons": [
     {
       "src": "./icons/icon-192.png",

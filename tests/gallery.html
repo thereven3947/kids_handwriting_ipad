@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letter Guide Gallery</title>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 16px; background: #f4fbff; color: #234; }
+      h1 { font-size: 20px; margin: 0 0 12px; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 12px; }
+      figure { margin: 0; background: #fff; border: 1px solid #cfe3f3; border-radius: 12px; padding: 6px; }
+      figcaption { font-weight: 700; padding: 2px 6px; }
+      canvas { width: 100%; height: 240px; display: block; }
+    </style>
+  </head>
+  <body>
+    <h1>Letter guide gallery: every track with its stroke order</h1>
+    <div class="grid" id="grid"></div>
+    <script src="../guides.js"></script>
+    <script>
+      const grid = document.getElementById("grid");
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach((letter) => {
+        const figure = document.createElement("figure");
+        figure.id = `letter-${letter}`;
+        const caption = document.createElement("figcaption");
+        caption.textContent = `${letter}${letter.toLowerCase()}`;
+        const canvas = document.createElement("canvas");
+        figure.append(caption, canvas);
+        grid.append(figure);
+
+        const ratio = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * ratio;
+        canvas.height = rect.height * ratio;
+        const ctx = canvas.getContext("2d");
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        const layout = LetterGuides.computeSheetLayout(rect.width, rect.height, [{ kind: "trace", chars: [letter, letter.toLowerCase()] }]);
+        LetterGuides.drawSheet(ctx, layout);
+      });
+    </script>
+  </body>
+</html>
